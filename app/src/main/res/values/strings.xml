@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SkillTest</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="search_artist">Busca a tu artista favorito</string>
+    <string name="format_count_followers">%s seguidores</string>
+    <string name="your_request_could_not_processed_try_later">No se ha podido procesar su solicitud, intente de nuevo más tarde</string>
+    <string name="artist_no_found">No se ha encontrado ningún artista con el nombre ingresado.</string>
+    <string name="albums">Álbumes</string>
+    <string name="search_in_spotify">Buscar en Spotify</string>
+    <string name="enter_artist_name">Debe ingresar el nombre de un artista para continuar.</string>
+    <string name="error">Error</string>
+    <string name="accept">Aceptar</string>
+</resources>

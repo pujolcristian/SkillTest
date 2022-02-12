@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.condorlabs.skill_test.feature_search_product.presentation.search_artist.SearchViewModel" />
+
+        <variable
+            name="artist"
+            type="com.condorlabs.skill_test.core.models.Item" />
+
+        <variable
+            name="urlImg"
+            type="String" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/window_bg"
+        tools:context=".feature_search_product.presentation.search_artist.SearchFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/big_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/item_bg">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_search"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edittext_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/small_margin"
+                        android:hint="@string/search_artist"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text_color"
+                        android:textColorHint="@color/primary_text_color"
+                        app:bindingEditTextValue="@{viewModel.nameArtist}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:background="@color/light_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_search"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_search"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:onClick="@{(v) -> viewModel.onSearchClick(v)}"
+                    app:icon="@drawable/ic_search"
+                    app:iconTint="@color/primary_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/first_artist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:background="@color/black"
+            app:cardCornerRadius="@dimen/default_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_search">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/item_bg"
+                android:padding="@dimen/small_margin">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/small_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/img_artist"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop"
+                        app:loadImageFromUrl="@{urlImg}"
+                        tools:src="@drawable/img_test" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/name_artist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:text="@{artist.name}"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/font_size_20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/card_img"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Don Omar" />
+
+
+                <TextView
+                    android:id="@+id/text_followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:text="@{String.format(@string/format_count_followers, artist.followers.total)}"
+                    android:textColor="@color/primary_text_color"
+                    app:layout_constraintStart_toEndOf="@+id/card_img"
+                    app:layout_constraintTop_toBottomOf="@+id/name_artist"
+                    tools:text="50000 seguidores" />
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:numStars="5"
+                    app:layout_constraintStart_toEndOf="@+id/card_img"
+                    app:layout_constraintTop_toBottomOf="@+id/text_followers"
+                    app:setPopularity="@{artist.popularity}" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_albums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/big_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/albums"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/font_size_20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/first_artist" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_albums"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_albums"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_list_album" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
